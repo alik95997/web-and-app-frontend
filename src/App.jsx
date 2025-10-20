@@ -8,7 +8,6 @@ import AddVitals from "./pages/AddVitals";
 
 export default function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -16,6 +15,6 @@ export default function App() {
         <Route path="/upload" element={<UploadReport />} />
         <Route path="/vitals" element={<AddVitals />} />
       </Routes>
-    </BrowserRouter>
+
   );
 }
