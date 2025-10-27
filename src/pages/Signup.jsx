@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography, Paper } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
+  Typography,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Person, Email, Lock } from "@mui/icons-material";
 import API from "../api/axiosConfig";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [form, setForm] = useState({ fullname: "", email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) =>
@@ -22,46 +33,149 @@ export default function Signup() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Paper sx={{ p: 3, mt: 8 }}>
-        <Typography variant="h5" align="center" gutterBottom>
-          Sign Up
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Full Name"
-            name="fullname"
-            fullWidth
-            margin="normal"
-            onChange={handleChange}
+    <Container maxWidth="lg" sx={{ mt: 8 }}>
+      <Paper
+        sx={{
+          display: "flex",
+          borderRadius: 4,
+          overflow: "hidden",
+          minHeight: 500,
+          boxShadow: "0 10px 30px rgba(0,0,0,0.12)",
+        }}
+      >
+        {/* Left Branding Side */}
+        <Box
+          sx={{
+            flex: 1,
+            background: "linear-gradient(135deg, #4caf50 0%, #81c784 100%)",
+            color: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            p: 6,
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="h2" fontWeight="bold" gutterBottom>
+            HealthMate
+          </Typography>
+          <Typography variant="body1" sx={{ maxWidth: 300 }}>
+            Your personal health companion. Upload reports, track vitals, and
+            get insights instantly.
+          </Typography>
+          <Box
+            sx={{
+              mt: 4,
+              width: 50,
+              height: 4,
+              backgroundColor: "#fff",
+              borderRadius: 2,
+              animation: "slideIn 1s forwards",
+            }}
           />
-          <TextField
-            label="Email"
-            name="email"
-            fullWidth
-            margin="normal"
-            onChange={handleChange}
-          />
-          <TextField
-            label="Password"
-            name="password"
-            type="password"
-            fullWidth
-            margin="normal"
-            onChange={handleChange}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 2 }}
+        </Box>
+
+        {/* Right Signup Form */}
+        <Box sx={{ flex: 1, p: 6, display: "flex", flexDirection: "column" }}>
+          <Typography variant="h4" fontWeight="bold" mb={3}>
+            Create Account
+          </Typography>
+
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
-            Sign Up
-          </Button>
-        </form>
-        <Typography align="center" sx={{ mt: 2 }}>
-          Already have an account? <Link to="/">Login</Link>
-        </Typography>
+            <TextField
+              label="Full Name"
+              name="fullname"
+              required
+              fullWidth
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Person />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              required
+              fullWidth
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Email />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              label="Password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              required
+              fullWidth
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Lock />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                      size="small"
+                      sx={{ color: "gray" }}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                mt: 2,
+                py: 1.5,
+                fontWeight: 600,
+                borderRadius: 3,
+                background: "linear-gradient(135deg, #4caf50 0%, #81c784 100%)",
+                "&:hover": {
+                  background: "linear-gradient(135deg, #43a047 0%, #66bb6a 100%)",
+                },
+              }}
+            >
+              Sign Up
+            </Button>
+          </form>
+
+          <Typography mt={3} align="center" variant="body2">
+            Already have an account?{" "}
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "#4caf50",
+                fontWeight: 600,
+              }}
+            >
+              Login
+            </Link>
+          </Typography>
+        </Box>
       </Paper>
     </Container>
   );
