@@ -1,6 +1,7 @@
 {
   "name": "myapp",
   "private": true,
+  "homepage": "https://alik95997.github.io/web-and-app-frontend/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
