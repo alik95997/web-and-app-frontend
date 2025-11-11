@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Person, Email, Lock } from "@mui/icons-material";
-import API from "../api/axiosConfig.js";
+import API from "../api/axiosConfig";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {

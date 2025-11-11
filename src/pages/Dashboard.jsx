@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../api/axiosConfig.js";
+import API from "../api/axiosConfig";
 import Navbar from "../components/Navbar";
 import {
   Container,
