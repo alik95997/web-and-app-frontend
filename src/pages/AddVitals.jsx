@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Container, Paper, Typography } from "@mui/material";
 import Navbar from "../components/Navbar";
-import API from "../api/axiosConfig";
+import API from "../api/axiosConfig.js  ";
 
 export default function AddVitals() {
   const [vitals, setVitals] = useState({ bp: "", sugar: "", weight: "", notes: "" });

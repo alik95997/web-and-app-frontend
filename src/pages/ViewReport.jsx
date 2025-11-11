@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import API from "../api/axiosConfig";
+import API from "../api/axiosConfig.js";
 import {
   Container,
   Typography,

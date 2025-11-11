@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // change when deployed
+  baseURL: "https://web-and-app-hackathon.vercel.app/api", // change when deployed
 });
 
 // attach token
